@@ -1,0 +1,55 @@
+.community-page {
+  padding: 4rem 2rem;
+  background: var(--white);
+  color: var(--blue-dark);
+}
+
+.community-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.community-hero p {
+  font-size: 1.125rem;
+  color: var(--gray-subtitle);
+  max-width: 600px;
+}
+
+.community-features {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 280px;
+}
+
+.feature-card h3 {
+  color: var(--blue-dark);
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  color: var(--gray-subtitle);
+}
+
+.community-call-to-action {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.community-call-to-action .btn-join-red {
+  background: var(--red);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}

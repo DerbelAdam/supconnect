@@ -1,0 +1,54 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  background-color: var(--white);
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  color: var(--blue-dark);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--gray-subtitle);
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-join {
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+}
+
+.btn-login {
+  background-color: var(--white);
+  color: var(--blue-dark);
+  border: 2px solid var(--blue-dark);
+}
+  
+.hero-image img {
+  max-width: 500px; /* adapte selon ton illustration Figma */
+  width: 100%;
+  height: auto;
+}

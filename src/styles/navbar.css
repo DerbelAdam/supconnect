@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--blue-dark);
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.nav-logo .logo-red {
+  color: var(--red);
+}
+
+.nav-links a {
+  margin-left: 1.5rem;
+  color: var(--blue-dark);
+  font-weight: 500;
+}
+
+.login-link {
+  border: 1px solid var(--red);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  color: var(--red);
+}
