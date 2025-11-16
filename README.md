@@ -1,4 +1,4 @@
-# 🎓 SUP'COM Connect
+#  SUP'COM Connect
 
 Une plateforme web moderne pour connecter les étudiants, alumni et enseignants de SUP'COM. Cette application permet le mentorat, le networking, et l'accès aux opportunités de carrière.
 
@@ -6,7 +6,7 @@ Une plateforme web moderne pour connecter les étudiants, alumni et enseignants 
 ![Firebase](https://img.shields.io/badge/Firebase-10.x-ffca28?logo=firebase)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📋 Table des matières
+##  Table des matières
 
 - [À propos du projet](#à-propos-du-projet)
 - [Choix technologiques](#choix-technologiques)
@@ -20,11 +20,11 @@ Une plateforme web moderne pour connecter les étudiants, alumni et enseignants 
 - [Déploiement](#déploiement)
 - [Contribution](#contribution)
 
-## 📖 À propos du projet
+##  À propos du projet
 
 SUP'COM Connect est une plateforme web sociale et éducative conçue spécifiquement pour la communauté de l'École Supérieure des Communications de Tunis (SUP'COM). L'objectif principal est de faciliter les échanges entre étudiants, anciens élèves et enseignants, tout en offrant des opportunités de mentorat et de développement de carrière.
 
-### 🎯 Objectifs principaux
+###  Objectifs principaux
 
 - **Connecter** la communauté SUP'COM (étudiants, alumni, professeurs)
 - **Faciliter** le mentorat et l'accompagnement académique
@@ -32,19 +32,19 @@ SUP'COM Connect est une plateforme web sociale et éducative conçue spécifique
 - **Favoriser** la collaboration sur des projets
 - **Créer** un réseau professionnel solide
 
-### 👥 Public cible
+###  Public cible
 
 - **Étudiants** : Recherche de mentorat, projets collaboratifs, opportunités de stages
 - **Alumni** : Partage d'expérience, recrutement, networking
 - **Enseignants** : Encadrement, suivi des étudiants, collaboration académique
 
-## 🔧 Choix technologiques
+##  Choix technologiques
 
 ### Pourquoi React ?
 
 Nous avons choisi **React** comme framework frontend pour plusieurs raisons stratégiques :
 
-#### ✅ Avantages de React
+####  Avantages de React
 
 1. **Composants réutilisables**
    - Architecture modulaire facilitant la maintenance
@@ -71,21 +71,13 @@ Nous avons choisi **React** comme framework frontend pour plusieurs raisons stra
    - Concepts simples à comprendre
    - Parfait pour les projets étudiants
 
-#### 📊 Comparaison avec d'autres frameworks
 
-| Critère | React | Vue.js | Angular |
-|---------|-------|--------|---------|
-| Courbe d'apprentissage | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
-| Performance | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Communauté | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Flexibilité | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| Écosystème | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 
 ### Pourquoi Firebase ?
 
 **Firebase** a été choisi comme solution backend pour ses nombreux avantages :
 
-#### ✅ Avantages de Firebase
+####  Avantages de Firebase
 
 1. **Backend as a Service (BaaS)**
    - Pas besoin de gérer un serveur
@@ -118,7 +110,7 @@ Nous avons choisi **React** comme framework frontend pour plusieurs raisons stra
    - CDN global
    - Certificat SSL automatique
 
-#### 🔄 Alternatives considérées
+####  Alternatives considérées
 
 - **Supabase** : Open-source mais moins mature
 - **AWS Amplify** : Plus complexe à configurer
@@ -146,9 +138,9 @@ Tools:
 markdown
 Copier le code
 
-## ✨ Fonctionnalités développées
+##  Fonctionnalités développées
 
-### 🔐 Module d'authentification
+###  Module d'authentification
 
 #### 1. Inscription utilisateur
 - **Formulaire d'inscription complet**
@@ -203,7 +195,7 @@ Copier le code
 
 **Code principal** : `src/context/AuthContext.js`
 
-### 🛡️ Système de routes protégées
+###  Système de routes protégées
 
 - **PrivateRoute Component**
   - Vérifie l'authentification avant l'accès
@@ -217,7 +209,7 @@ Copier le code
 
 **Code principal** : `src/components/PrivateRoute.js`
 
-### 🎨 Interface utilisateur
+###  Interface utilisateur
 
 #### 1. Navbar dynamique
 - **Mode non-connecté**
@@ -238,7 +230,7 @@ Copier le code
 
 #### 2. Pages publiques
 
-**Page d'accueil** (`/`)
+**Page d'accueil** (`/home`)
 - Hero section accueillante
 - Section "Pourquoi SUP'COM Connect"
 - Statistiques de la plateforme
@@ -266,7 +258,7 @@ Copier le code
 - Opportunités d'emploi
 - Collaborations professionnelles
 
-### 🗄️ Base de données Firestore
+###  Base de données Firestore
 
 #### Structure des collections
 
@@ -295,7 +287,7 @@ service cloud.firestore {
     }
   }
 }
-🎨 Design et UX
+ Design et UX
 Principes de design appliqués
 Cohérence visuelle
 
@@ -339,7 +331,7 @@ Copier le code
 --text-light: #666;
 --error-color: #c33;
 --background: #ffffff;
-🏗️ Architecture du projet
+ Architecture du projet
 Pattern de conception
 Component-Based Architecture
 
@@ -371,7 +363,7 @@ Copier le code
 User Action → Component → Context API → Firebase
                 ↓
             UI Update ← State Change ← Firebase Response
-📦 Prérequis
+ Prérequis
 Avant de commencer, assurez-vous d'avoir :
 
 Logiciels requis
@@ -392,7 +384,7 @@ Copier le code
 node --version
 npm --version
 git --version
-🚀 Guide de lancement
+ Guide de lancement
 Phase 1 : Préparation de l'environnement
 bash
 Copier le code
@@ -420,7 +412,7 @@ Accessible à : http://localhost:3000
 Phase 4 : Test de l'application
 Inscription, connexion, routes protégées, Google OAuth
 
-📁 Structure du projet
+ Structure du projet
 pgsql
 Copier le code
 supcom-connect/
@@ -439,5 +431,5 @@ supcom-connect/
 ├── package.json
 ├── package-lock.json
 └── README.md
-📜 Scripts disponibles
-npm start - Lancer en développement
+ Scripts disponibles
+npm run dev - Lancer en développement
