@@ -28,7 +28,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(formData.email, formData.password);
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       setError("Échec de la connexion. Vérifiez vos identifiants.");
     }

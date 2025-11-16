@@ -43,9 +43,11 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          SUP'COM Connect
+        <Link to="/home" className="navbar-logo">
+          <span style={{ color: "var(--blue-dark)" }}>SUP'</span>
+          <span style={{ color: "var(--red)" }}>CONNECT</span>
         </Link>
+
 
         <button
           className="navbar-toggle"
@@ -57,22 +59,22 @@ export default function Navbar() {
         <ul className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
           <li>
             <Link to="/home" onClick={() => setIsMenuOpen(false)}>
-              Accueil
+              Home
             </Link>
           </li>
           <li>
             <Link to="/community" onClick={() => setIsMenuOpen(false)}>
-              Communauté
+              Community
             </Link>
           </li>
           <li>
             <Link to="/mentorship" onClick={() => setIsMenuOpen(false)}>
-              Mentorat
+              Mentorship
             </Link>
           </li>
           <li>
             <Link to="/career" onClick={() => setIsMenuOpen(false)}>
-              Carrières
+              Careers
             </Link>
           </li>
         </ul>
