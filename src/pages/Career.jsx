@@ -4,6 +4,7 @@ return (
 <h2>Carrières & Opportunités</h2>
 <p>Explore internships, job offers, and collaboration opportunities.</p>
 </div>
+
 );
 }
 

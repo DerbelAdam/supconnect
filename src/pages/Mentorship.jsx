@@ -30,6 +30,7 @@ export default function Mentorship() {
         <button className="btn-join-red">Become a Mentor</button>
         <button className="btn-outline-blue">Find a Mentor</button>
       </section>
+      
     </div>
   );
 }

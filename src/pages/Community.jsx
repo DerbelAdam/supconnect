@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/community.css";
+import Footer from "../components/Footer";
 
 export default function Community() {
   return (
@@ -29,6 +30,7 @@ export default function Community() {
       <section className="community-call-to-action">
         <button className="btn-join-red">Join the Community</button>
       </section>
+      <Footer />
     </div>
   );
 }
