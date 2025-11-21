@@ -1,5 +1,5 @@
 // src/App.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
@@ -11,11 +11,17 @@ import Mentorship from "./pages/Mentorship";
 import Career from "./pages/Career";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-
+import Profile from "./pages/Profile";
 // Composants
 import Navbar from "./components/Navbar";
 
 function App() {
+  const [email, setEmail] = useState(null)  ;
+  useEffect(() => {
+    document.title = "SUP'CONNECT";
+    setEmail(localStorage.getItem("email"));
+
+  }, []);
   return (
     <Router>
       <AuthProvider>
@@ -23,10 +29,13 @@ function App() {
           <Navbar />
           <Routes>
             {/* Routes publiques */}
+            <Route path="/home" element={email ? <Home /> : <Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-                   
+            <Route path="/profile" element={<Profile />} />
+
+            {/* {<Route path="/login" element={role=="etud" ? <Etud> : role ==  "ens" ? <Ens> : <super> } />} */}
 
 
             {/* Routes protégées */}

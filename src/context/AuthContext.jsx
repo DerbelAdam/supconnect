@@ -28,11 +28,15 @@ export function AuthProvider({ children }) {
       role: userData.role || "student",
       createdAt: new Date().toISOString()
     });
+      localStorage.setItem("email", email);
+
     return userCredential;
   }
 
   function login(email, password) {
+    localStorage.setItem("email", email);
     return signInWithEmailAndPassword(auth, email, password);
+
   }
 
   async function loginWithGoogle() {

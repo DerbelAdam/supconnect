@@ -1,18 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* petites utilities / overrides spécifiques */
+:root{
+  --sup-blue: #0A1F44;
+  --sup-red: #E30613;
+}
+
+/* body defaults */
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--white);
-  color: var(--blue-dark);
+  @apply bg-white text-sup-blue font-inter;
 }
-
-h1, h2, h3, p {
-  margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
