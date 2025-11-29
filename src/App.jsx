@@ -29,7 +29,7 @@ function App() {
           <Navbar />
           <Routes>
             {/* Routes publiques */}
-            <Route path="/home" element={email ? <Home /> : <Login />} />
+            <Route path="/" element={email ? <Home /> : <Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
