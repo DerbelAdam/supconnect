@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { db } from "../config/firebase";
 import { collection, addDoc, Timestamp, getDocs, deleteDoc, doc, query, where } from "firebase/firestore";
-
+import Footer from "../components/Footer";
 export default function Community() {
   const { currentUser } = useAuth();
   const [postContent, setPostContent] = useState("");
@@ -144,8 +144,12 @@ const handleLike = async (postIndex) => {
 
 
   return (
-    <div className="bg-light-grey min-h-screen pt-28 pb-10">
-      <main className="max-w-[700px] mx-auto flex flex-col gap-6">
+    /* 1. On ajoute 'flex flex-col' pour gérer la distribution de l'espace */
+    <div className="bg-light-grey min-h-screen flex flex-col">
+    
+      <main className="max-w-[700px] mx-auto flex flex-col gap-6 pt-28 pb-10 flex-grow">
+        
+        {/* Création de Post */}
         <div className="bg-white rounded-2xl p-6 shadow-xl">
           <form onSubmit={handleCreatePost} className="flex gap-4">
             <img src="https://i.pravatar.cc/150?img=68" className="w-12 h-12 rounded-full" />
@@ -180,7 +184,7 @@ const handleLike = async (postIndex) => {
           </form>
         </div>
 
-        {/* Display Posts from Firestore */}
+        {/* Liste des Posts */}
         {posts.map((post, idx) => (
           <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl">
             <div className="flex items-start gap-3 mb-4">
@@ -214,6 +218,10 @@ const handleLike = async (postIndex) => {
           </div>
         ))}
       </main>
+      
+      {/* 3. On enlève la section inutile autour du footer pour éviter des marges parasites */}
+      <Footer />
+
     </div>
   );
 }
