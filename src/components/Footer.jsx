@@ -38,7 +38,6 @@ export default function Footer() {
               <FooterLink to="/home">Accueil</FooterLink>
               <FooterLink to="/community">Communauté</FooterLink>
               <FooterLink to="/mentorship">Mentorat</FooterLink>
-              <FooterLink to="/career">Carrières</FooterLink>
             </ul>
           </div>
 

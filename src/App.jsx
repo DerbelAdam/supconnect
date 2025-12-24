@@ -1,6 +1,11 @@
-// src/App.js
+
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -8,35 +13,42 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Mentorship from "./pages/Mentorship";
-import Career from "./pages/Career";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import EditCareer from "./pages/EditCareer";
 // Composants
 import Navbar from "./components/Navbar";
 
 function App() {
-  const [email, setEmail] = useState(null)  ;
+  const [email, setEmail] = useState(null);
+
   useEffect(() => {
     document.title = "SUP'CONNECT";
     setEmail(localStorage.getItem("email"));
-
   }, []);
+
   return (
     <Router>
       <AuthProvider>
         <div className="App">
           <Navbar />
+
           <Routes>
+            {/* Route racine */}
+            <Route
+              path="/"
+              element={
+                email ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />
+              }
+            />
+
             {/* Routes publiques */}
-            <Route path="/" element={email ? <Home /> : <Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-
-            {/* {<Route path="/login" element={role=="etud" ? <Etud> : role ==  "ens" ? <Ens> : <super> } />} */}
-
 
             {/* Routes protégées */}
             <Route
@@ -56,13 +68,14 @@ function App() {
               }
             />
             <Route
-              path="/career"
-              element={
-                <PrivateRoute>
-                  <Career />
-                </PrivateRoute>
-              }
+              path="/edit-profile"
+              element={<EditProfile />}
             />
+            <Route
+              path="/edit-career"
+              element={<EditCareer />}
+            />
+
           </Routes>
         </div>
       </AuthProvider>

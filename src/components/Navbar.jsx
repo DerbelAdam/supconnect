@@ -55,7 +55,6 @@ export default function Navbar() {
     { to: "/home", label: "Home" },
     { to: "/community", label: "Community" },
     { to: "/mentorship", label: "Mentorship" },
-    { to: "/career", label: "Careers" },
   ];
 
   return (

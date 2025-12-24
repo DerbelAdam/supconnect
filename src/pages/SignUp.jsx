@@ -6,21 +6,24 @@ import "../styles/auth.css";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "student"
+    role: "student",
   });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const { signup, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -38,15 +41,19 @@ export default function SignUp() {
     try {
       setError("");
       setLoading(true);
+
       await signup(formData.email, formData.password, {
-        name: formData.name,
-        role: formData.role
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        role: formData.role,
       });
+
       navigate("/");
     } catch (err) {
       setError("Échec de la création du compte: " + err.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handleGoogleSignUp = async () => {
@@ -57,8 +64,9 @@ export default function SignUp() {
       navigate("/");
     } catch (err) {
       setError("Échec de la connexion avec Google: " + err.message);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -70,19 +78,35 @@ export default function SignUp() {
         {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">
+          {/* Prénom */}
           <div className="form-group">
-            <label htmlFor="name">Nom complet</label>
+            <label htmlFor="firstName">Prénom</label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+              placeholder="Votre prénom"
+            />
+          </div>
+
+          {/* Nom */}
+          <div className="form-group">
+            <label htmlFor="lastName">Nom</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               required
               placeholder="Votre nom"
             />
           </div>
 
+          {/* Email */}
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -96,6 +120,7 @@ export default function SignUp() {
             />
           </div>
 
+          {/* Rôle */}
           <div className="form-group">
             <label htmlFor="role">Je suis</label>
             <select
@@ -111,6 +136,7 @@ export default function SignUp() {
             </select>
           </div>
 
+          {/* Mot de passe */}
           <div className="form-group">
             <label htmlFor="password">Mot de passe</label>
             <input
@@ -124,6 +150,7 @@ export default function SignUp() {
             />
           </div>
 
+          {/* Confirmation */}
           <div className="form-group">
             <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
             <input
@@ -146,8 +173,15 @@ export default function SignUp() {
           <span>OU</span>
         </div>
 
-        <button onClick={handleGoogleSignUp} className="btn-google" disabled={loading}>
-          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
+        <button
+          onClick={handleGoogleSignUp}
+          className="btn-google"
+          disabled={loading}
+        >
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google"
+          />
           Continuer avec Google
         </button>
 
