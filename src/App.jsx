@@ -18,8 +18,11 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import EditCareer from "./pages/EditCareer";
+import MentorDashboard from "./pages/MentorDashboard";
+import StudentRequests from "./pages/StudentRequests";
+
 // Composants
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavbarNew";
 
 function App() {
   const [email, setEmail] = useState(null);
@@ -75,6 +78,10 @@ function App() {
               path="/edit-career"
               element={<EditCareer />}
             />
+            <Route path="/my-requests" element={<StudentRequests />} />
+            <Route path="/mentor/dashboard" element={<MentorDashboard />} />
+
+  
 
           </Routes>
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import Hero from "../components/Hero";
-import WhySection from "../components/WhySection";
-import StatsSection from "../components/StatsSection";
-import Testimonials from "../components/Testimonials";
-import Footer from "../components/Footer";
+import Hero from "../components/HeroNew";
+import WhySection from "../components/WhySectionNew";
+import StatsSection from "../components/StatsSectionNew";
+import Testimonials from "../components/TestimonialsNew";
+import Footer from "../components/FooterNew";
 
 export default function Home() {
   return (

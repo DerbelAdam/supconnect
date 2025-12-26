@@ -68,90 +68,124 @@ export default function EditCareer() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A1F44] flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8">
-        <h1 className="text-2xl font-extrabold text-[#0A1F44] mb-6">
-          Parcours professionnel
-        </h1>
-
-        <form onSubmit={handleSubmit} className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="border rounded-2xl p-6 relative"
-            >
-              <button
-                type="button"
-                onClick={() => removeExperience(index)}
-                className="absolute top-4 right-4 text-red-500 font-bold"
-              >
-                ✕
-              </button>
-
-              <h3 className="font-bold mb-4">
-                Expérience {index + 1}
-              </h3>
-
-              <Input
-                label="Poste / Fonction"
-                value={exp.title}
-                onChange={(v) => handleChange(index, "title", v)}
-              />
-
-              <Input
-                label="Entreprise"
-                value={exp.company}
-                onChange={(v) => handleChange(index, "company", v)}
-              />
-
-              <div className="grid grid-cols-2 gap-4">
-                <Input
-                  label="Année début"
-                  value={exp.startYear}
-                  onChange={(v) => handleChange(index, "startYear", v)}
-                />
-
-                <Input
-                  label="Année fin"
-                  value={exp.endYear}
-                  onChange={(v) => handleChange(index, "endYear", v)}
-                />
-              </div>
-
-              <Textarea
-                label="Description"
-                value={exp.description}
-                onChange={(v) => handleChange(index, "description", v)}
-              />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-2xl">
+        {/* HEADER */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sup-blue to-sup-red flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-          ))}
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-sup-blue to-sup-red bg-clip-text text-transparent">
+                Parcours professionnel
+              </h1>
+              <p className="text-gray-600 mt-1">Gérez votre expérience professionnelle</p>
+            </div>
+          </div>
+        </div>
 
-          <button
-            type="button"
-            onClick={addExperience}
-            className="w-full py-3 border-2 border-dashed border-[#E30613] text-[#E30613] font-bold rounded-2xl"
-          >
-            + Ajouter une expérience
-          </button>
+        {/* FORM CARD */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {experiences.length > 0 && (
+              <div className="mb-8 p-4 bg-gradient-to-r from-blue-50 to-red-50 rounded-lg border border-blue-200">
+                <p className="text-sm font-medium text-gray-700">
+                  Vous avez <span className="font-bold text-sup-red">{experiences.length}</span> expérience(s) professionnelle(s)
+                </p>
+              </div>
+            )}
 
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex-1 py-3 bg-[#E30613] hover:bg-red-700 text-white font-bold rounded-2xl"
-            >
-              {loading ? "Enregistrement..." : "Enregistrer"}
-            </button>
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="border-2 border-gray-200 rounded-xl p-6 relative hover:border-sup-red transition-colors duration-300 bg-gradient-to-br from-gray-50 to-white"
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-bold text-lg text-sup-blue">Expérience {index + 1}</h3>
+                  <button
+                    type="button"
+                    onClick={() => removeExperience(index)}
+                    className="text-red-500 hover:text-red-700 font-bold text-xl hover:bg-red-50 w-8 h-8 rounded-lg transition"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <Input
+                      label="Poste / Fonction"
+                      value={exp.title}
+                      onChange={(v) => handleChange(index, "title", v)}
+                    />
+                  </div>
+
+                  <div>
+                    <Input
+                      label="Entreprise"
+                      value={exp.company}
+                      onChange={(v) => handleChange(index, "company", v)}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <Input
+                      label="Année début"
+                      value={exp.startYear}
+                      onChange={(v) => handleChange(index, "startYear", v)}
+                    />
+
+                    <Input
+                      label="Année fin"
+                      value={exp.endYear}
+                      onChange={(v) => handleChange(index, "endYear", v)}
+                    />
+                  </div>
+
+                  <div>
+                    <Textarea
+                      label="Description"
+                      value={exp.description}
+                      onChange={(v) => handleChange(index, "description", v)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
 
             <button
               type="button"
-              onClick={() => navigate("/profile")}
-              className="flex-1 py-3 bg-gray-200 rounded-2xl font-bold"
+              onClick={addExperience}
+              className="w-full py-3 border-2 border-dashed border-sup-red text-sup-red hover:bg-red-50 font-bold rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
             >
-              Annuler
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Ajouter une expérience
             </button>
-          </div>
-        </form>
+
+            <div className="flex gap-4 pt-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex-1 py-3 bg-gradient-to-r from-sup-blue to-sup-red hover:shadow-lg text-white font-bold rounded-lg transition-all duration-300 shadow-lg transform hover:-translate-y-1 disabled:opacity-50"
+              >
+                {loading ? "Enregistrement..." : "Enregistrer"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/profile")}
+                className="flex-1 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition"
+              >
+                Retour au profil
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
@@ -161,14 +195,14 @@ export default function EditCareer() {
 
 function Input({ label, value, onChange }) {
   return (
-    <div className="mb-4">
-      <label className="block text-sm font-bold text-gray-600 mb-1">
+    <div>
+      <label className="text-sm font-bold text-gray-700 block mb-2">
         {label}
       </label>
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#E30613]"
+        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sup-red focus:border-transparent outline-none transition"
       />
     </div>
   );
@@ -177,14 +211,14 @@ function Input({ label, value, onChange }) {
 function Textarea({ label, value, onChange }) {
   return (
     <div>
-      <label className="block text-sm font-bold text-gray-600 mb-1">
+      <label className="text-sm font-bold text-gray-700 block mb-2">
         {label}
       </label>
       <textarea
         rows="3"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-[#E30613]"
+        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sup-red focus:border-transparent outline-none transition"
       />
     </div>
   );

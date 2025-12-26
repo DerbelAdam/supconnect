@@ -12,6 +12,7 @@ import {
   doc,
   setDoc,
   getDoc,
+  onSnapshot,
   serverTimestamp,
 } from "firebase/firestore";
 
@@ -42,6 +43,7 @@ export function AuthProvider({ children }) {
       lastName: userData.lastName || "",
       email,
       role: userData.role || "student",
+      isMentor: false,
       bio: "",
       phone: "",
       birthDate: "",
@@ -86,6 +88,7 @@ export function AuthProvider({ children }) {
         lastName,
         email: result.user.email,
         role: "student",
+        isMentor: false,
         bio: "",
         phone: "",
         birthDate: "",
@@ -109,43 +112,47 @@ export function AuthProvider({ children }) {
   }
 
   /* ==========================
-     AUTH STATE LISTENER (FIX)
+     AUTH STATE LISTENER (REAL-TIME)
      ========================== */
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
         setCurrentUser(null);
         setLoading(false);
         return;
       }
 
+      // Écouter les changements en temps réel du document utilisateur
       const userRef = doc(db, "users", user.uid);
-      const userDoc = await getDoc(userRef);
+      const unsubscribeDoc = onSnapshot(userRef, (userDoc) => {
+        if (userDoc.exists()) {
+          const data = userDoc.data();
 
-      if (userDoc.exists()) {
-        const data = userDoc.data();
+          setCurrentUser({
+            uid: user.uid,
+            email: user.email,
+            firstName: data.firstName || "",
+            lastName: data.lastName || "",
+            role: data.role || "student",
+            isMentor: data.isMentor || false,
+            bio: data.bio || "",
+            phone: data.phone || "",
+            birthDate: data.birthDate || "",
+            gender: data.gender || "",
+            website: data.website || "",
+            photoURL: data.photoURL || null,
+            coverURL: data.coverURL || null,
+            career: data.career || null,
+            createdAt: data.createdAt || null,
+          });
+        } else {
+          setCurrentUser(null);
+        }
 
-        setCurrentUser({
-          uid: user.uid,
-          email: user.email,
-          firstName: data.firstName || "",
-          lastName: data.lastName || "",
-          role: data.role || "student",
-          bio: data.bio || "",
-          phone: data.phone || "",
-          birthDate: data.birthDate || "",
-          gender: data.gender || "",
-          website: data.website || "",
-          photoURL: data.photoURL || null,
-          coverURL: data.coverURL || null,
-          career: data.career || null,
-          createdAt: data.createdAt || null,
-        });
-      } else {
-        setCurrentUser(null);
-      }
+        setLoading(false);
+      });
 
-      setLoading(false);
+      return unsubscribeDoc;
     });
 
     return unsubscribe;

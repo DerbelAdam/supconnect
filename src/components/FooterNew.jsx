@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A1F44] text-white pt-16 pb-8 border-t border-white/5">
+    <footer className="bg-gradient-to-br from-[#0A1F44] to-blue-900 text-white pt-16 pb-8 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
@@ -13,14 +13,15 @@ export default function Footer() {
           
           {/* Colonne 1: Brand & Bio */}
           <div className="space-y-6">
-            <Link to="/home" className="text-2xl font-bold tracking-tight">
-              <span className="text-white">SUP’</span>
+            <Link to="/home" className="inline-block text-2xl font-black tracking-tight hover:opacity-80 transition">
+              <span className="text-white">SUP'</span>
               <span className="text-[#E30613]">CONNECT</span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+            <p className="text-blue-100 text-sm leading-relaxed max-w-xs">
               La plateforme de référence pour connecter les talents de demain. 
               Développez votre réseau, trouvez un mentor et accédez aux meilleures opportunités.
             </p>
+            
             {/* Réseaux Sociaux */}
             <div className="flex space-x-4">
               <SocialIcon path="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3H13v6.8c4.56-.93 8-4.96 8-9.8z" />
@@ -29,27 +30,28 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Colonne 2: Quick Links (Navigation simplifiée) */}
+          {/* Colonne 2: Quick Links */}
           <div className="md:justify-self-center">
-            <h3 className="text-lg font-semibold mb-6 border-l-4 border-[#E30613] pl-3 text-white">
+            <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
+              <span className="text-[#E30613]">•</span>
               Navigation
             </h3>
-            <ul className="space-y-4 text-gray-400">
+            <ul className="space-y-4 text-blue-100">
               <FooterLink to="/home">Accueil</FooterLink>
               <FooterLink to="/community">Communauté</FooterLink>
               <FooterLink to="/mentorship">Mentorat</FooterLink>
             </ul>
           </div>
 
-          {/* Colonne 3: Appel à l'action (Join Community) */}
-          <div className="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center space-y-4">
+          {/* Colonne 3: CTA */}
+          <div className="bg-white/10 backdrop-blur p-8 rounded-2xl border border-white/20 flex flex-col items-center text-center space-y-4 hover:bg-white/15 transition-all duration-300">
             <h3 className="text-xl font-bold">Prêt à propulser votre avenir ?</h3>
-            <p className="text-gray-400 text-sm">
+            <p className="text-blue-100 text-sm">
               Rejoignez des centaines d'étudiants et professionnels dès aujourd'hui.
             </p>
             <Link 
               to="/signup" 
-              className="w-full bg-[#E30613] hover:bg-[#c40511] text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg shadow-red-600/20 transform hover:-translate-y-1 text-center"
+              className="w-full bg-[#E30613] hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-lg transform hover:scale-105 text-center"
             >
               S'inscrire gratuitement
             </Link>
@@ -58,8 +60,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {currentYear} SUP’CONNECT. Propulsé par l'excellence académique.</p>
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-blue-100">
+          <p>© {currentYear} <span className="font-bold">SUP'CONNECT</span>. Propulsé par l'excellence académique.</p>
           <div className="flex space-x-6">
             <Link to="/terms" className="hover:text-white transition-colors">Conditions d'utilisation</Link>
           </div>
@@ -70,13 +72,13 @@ export default function Footer() {
   );
 }
 
-// Composants utilitaires pour la propreté du code
+// Composants utilitaires
 function FooterLink({ to, children }) {
   return (
     <li>
       <Link 
         to={to} 
-        className="hover:text-[#E30613] hover:translate-x-1 transition-all duration-300 inline-block"
+        className="hover:text-white hover:translate-x-1 transition-all duration-300 inline-block"
       >
         {children}
       </Link>
@@ -88,11 +90,12 @@ function SocialIcon({ path }) {
   return (
     <a 
       href="#" 
-      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#E30613] transition-all duration-300 group"
+      className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#E30613] transition-all duration-300 group"
     >
-      <svg className="w-5 h-5 fill-gray-400 group-hover:fill-white transition-colors" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 fill-blue-100 group-hover:fill-white transition-colors" viewBox="0 0 24 24">
         <path d={path} />
       </svg>
     </a>
   );
 }
+

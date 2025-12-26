@@ -70,20 +70,29 @@ export default function EditProfile() {
   if (!currentUser) return null;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex justify-center px-4 py-12">
-      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50 flex justify-center px-4 py-12">
+      <div className="w-full max-w-3xl">
         {/* HEADER */}
         <div className="mb-8">
-          <h1 className="text-3xl font-extrabold text-[#0A1F44]">
-            Modifier mon profil
-          </h1>
-          <p className="text-gray-500 mt-1">
-            Complétez vos informations SUP’CONNECT
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-sup-blue to-sup-red flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-sup-blue to-sup-red bg-clip-text text-transparent">
+                Modifier mon profil
+              </h1>
+              <p className="text-gray-600 mt-1">Mettez à jour vos informations SUP'CONNECT</p>
+            </div>
+          </div>
         </div>
 
-        {/* FORM */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        {/* FORM CARD */}
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+          {/* FORM */}
+          <form onSubmit={handleSubmit} className="space-y-6">
           {/* NOMS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Input
@@ -172,6 +181,7 @@ export default function EditProfile() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }

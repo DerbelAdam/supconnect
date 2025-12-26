@@ -12,7 +12,7 @@ export default function Profile() {
       <div className="min-h-screen flex items-center justify-center bg-[#0A1F44] text-white">
         <div className="animate-pulse flex flex-col items-center">
           <div className="w-12 h-12 border-4 border-[#E30613] border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p className="font-medium">Chargement du profil SUP’CONNECT...</p>
+          <p className="font-medium">Chargement du profil SUP'CONNECT...</p>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ export default function Profile() {
               {/* Nom & rôle */}
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-3xl font-extrabold">
-                  {fullName || "Utilisateur SUP’CONNECT"}
+                  {fullName || "Utilisateur SUP'CONNECT"}
                 </h1>
 
                 <span className="inline-block mt-2 px-4 py-1 bg-red-50 text-[#E30613] text-sm font-bold rounded-full border border-red-100">
@@ -83,7 +83,7 @@ export default function Profile() {
               <div className="bg-white rounded-3xl p-8 shadow-sm text-[#0A1F44]">
                 <h3 className="text-lg font-bold mb-4">À propos</h3>
                 <p className="text-gray-600 italic text-sm">
-                  “{currentUser.bio || "Aucune description ajoutée pour le moment."}”
+                  "{currentUser.bio || "Aucune description ajoutée pour le moment."}"
                 </p>
               </div>
 
@@ -124,7 +124,7 @@ export default function Profile() {
                 </div>
               </div>
 
-              {/* ✅ PARCOURS PROFESSIONNEL */}
+              {/* PARCOURS PROFESSIONNEL */}
               <CareerSection />
 
             </div>
@@ -138,11 +138,11 @@ export default function Profile() {
 function InfoItem({ label, value }) {
   return (
     <div>
-      <p className="text-xs font-bold text-gray-400 uppercase mb-1">
+      <p className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wide">
         {label}
       </p>
-      <p className="font-semibold">
-        {value || "Non renseigné"}
+      <p className="font-semibold text-gray-800 text-sm">
+        {value || <span className="text-gray-400 italic">Non renseigné</span>}
       </p>
     </div>
   );
